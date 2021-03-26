@@ -1,3 +1,39 @@
+<% if user_signed_in? %>
+<div class="main">
+  <div class="header">
+    <h1 class="dai">ようこそ！</h1>
+    <%= link_to current_user.nickname, "#", class: "dai"%>さん！<br>
+  </div>
+<a class="dai2"><%= link_to current_user.nickname, "#", class: "dai"%>さんには『給与』と『変動費』を入力してもらいます</a>
+<h1 class="dai"> 給与に関しては、手取りの金額 </h1>
+<h1 class="dai"> 変動費に関しては、全額</h1>
+<h1 class="can">入力してください!!!!!</h1>
+<div class="contents row">
+  <div class="container">
+    <h2>変動費入力フォーム</h2>
+    <%= form_with model: @salary, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
+      <div class="field">
+        <%= f.label :給与 %><br />
+        <%= f.text_field :money, autofocus: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :月々の食費 %><br />
+        <%= f.text_field :food_expenses, autocomplete: "off" %>
+      </div>
+
+       <div class="field">
+        <%= f.label :その他の支出。娯楽や趣味%><br />
+        <%= f.text_field :expenses, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "完了" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% else %>
 <div class="main">
   <div class="header">
     <div class="hheder">
@@ -43,3 +79,4 @@
     <h1 class="botton">＊会員登録がお済みでない方は利用できない場合があります＊</h1>
   </div>
 </div>
+<% end %>
