@@ -5,7 +5,7 @@
   <h1 class="suggestion">
     <% @salary.each  do  |salary|%>
       <% if current_user.rent > 70000 && current_user.utility_costs > 15000 && current_user.phone > 15000 && salary.money < 240000 && salary.food_expenses > 40000 && salary.expenses> 20000%><br>
-        <%= "お前みたいなゴミ野郎はなかなかいないぞ。頭も悪いし楽観主義者。お前の人生だから好きにしたらいいけど" %>
+        <%= "お前ゴミ野郎だな。頭も悪いし楽観主義者。お前の人生だから好きにしたらいいけど" %>
       <% elsif current_user.rent < 70000 && current_user.utility_costs > 15000 && current_user.phone > 15000 && salary.money < 240000  && salary.food_expenses > 40000 && salary.expenses> 20000%><br>
         <%= "無駄な出費が多過ぎます。身の丈を考えて生活してみては？このままではあなたの人生高確率で終わりますよ" %>
       <% elsif current_user.rent < 70000 && current_user.utility_costs < 10000 && current_user.phone > 15000 && salary.money < 240000  && salary.food_expenses > 40000 && salary.expenses> 20000%><br>
@@ -20,5 +20,9 @@
        <%= "素晴らしいです。今の時代のニーズに合った生活を送れています。継続は力なり" %></h1>
       <%end%>
     <%end%> 
+    <div class="user_nav grid-6">
+    ___________<br>
+      |『<%= link_to "終了する", destroy_user_session_path, method: :delete %>』|<br>
+    </div>
   </div>
 </div>

@@ -1,9 +1,55 @@
 <% if user_signed_in?%> 
-
-ここでnewに遷移させる記述を加えて移動させる
-  <div class="grid-6">
-    <%= link_to "データを入力", new_salary_path, class: "post" %>
+<div class="main1">
+  <div class="top1">ログインユーザー：『<%= current_user.nickname %>』
+    <h1 class="nickname">
+      診断結果！
+    </h1>
   </div>
+  <div class="top2">家賃：<%= current_user.rent %>円 
+    <h1 class="rent">
+      <%if current_user.rent <= 50000 %>
+        <%= "安っ！事故物件ですか？それか都心の外れか……。"%>
+      <%elsif current_user.rent > 50000 && current_user.rent <= 70000%>
+        <%= "このくらいの額の家賃が理想的です！"%>
+      <%elsif current_user.rent > 70000 && current_user.rent <= 90000%>
+        <%= "中級貴族といった所か・・・。"%>
+      <%else%>
+        <%="論外。バカか"%>
+      <% end %>
+    </h1>
+  </div>
+  <div class="top3">光熱費：<%= current_user.utility_costs%>円 
+    <h1 class="utility">
+      <%if current_user.utility_costs <= 5000 %>
+        <%= "安っ！仕事し過ぎじゃないですか？"%>
+      <%elsif current_user.utility_costs > 5000 && current_user.utility_costs <= 7000%>
+        <%= "倹約家ですね。あなたの努力いつか報われます様に"%>
+      <%elsif current_user.utility_costs > 7000 && current_user.utility_costs <= 10000%>
+        <%= "少し努力が必要ですね。電力・ガス会社を変えてみるのも一つです"%>
+      <%else%>
+        <%="いつか痛い目に合うぞお前"%>
+      <% end %>
+    </h1>
+  </div>
+  <div class="top4">携帯料金：<%= current_user.phone%>円 
+    <h1 class="phone">
+      <%if current_user.phone <= 8000 %>
+        <%= "安っ！素晴らしい！！！"%>
+      <%elsif current_user.phone > 8000 && current_user.phone <= 10000%>
+        <%= "良いですね！不要なオプションは解約住んでますか？"%>
+      <%elsif current_user.phone > 10000 && current_user.phone <= 13000%>
+        <%= "不要なオプションの解約・料金プランの見直しをしましょう"%>
+      <%else%>
+        <%="お前みたいなバカがこの日本を支えてます。ありがとう"%>
+      <% end %>
+    </h1>
+  </div>
+  <h1 class="top5">
+    <div class="grid-6">
+      <%= link_to "＊[残りのデータも入力]＊", new_salary_path, class: "post" %>
+    </div>
+  </h1>
+</div>
 <% else %>
   <div class="main">
     <div class="header">
